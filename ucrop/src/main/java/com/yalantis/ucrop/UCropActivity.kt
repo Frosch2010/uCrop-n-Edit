@@ -160,10 +160,14 @@ class UCropActivity : AppCompatActivity() {
             }
             toolbar.setPadding(insets.left, insets.top, insets.right, 0)
             val controls = v.findViewById<View>(R.id.wrapper_states)
-            controls.updateLayoutParams {
-                height = resources.getDimensionPixelSize(R.dimen.ucrop_height_wrapper_states) + insets.bottom
+            if (controls != null) {
+                controls.updateLayoutParams {
+                    height = resources.getDimensionPixelSize(R.dimen.ucrop_height_wrapper_states) + insets.bottom
+                }
+                controls.setPadding(0, 0, 0, insets.bottom)
+            } else {
+                v.setPadding(0, 0, 0, insets.bottom)
             }
-            controls.setPadding(0, 0, 0, insets.bottom)
             windowInsets
         }
     }
